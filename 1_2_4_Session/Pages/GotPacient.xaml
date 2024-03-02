@@ -1,0 +1,20 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.GotPacient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GotPacient">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <TextBox Name="PacId" FontSize="17"></TextBox> 
+            <Button Name="GotPac" FontSize="17" Click="GotPac_Click"
+                    Content="Найти"></Button>
+            <Button Name="GotQr" FontSize="17" Click="GotQr_Click"
+                    Content="Найти по qr-коду"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

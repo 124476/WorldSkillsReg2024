@@ -1,0 +1,85 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.RegPacient"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="RegPacient">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Фамилия:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Surname}" FontSize="17"></TextBox>
+            <TextBlock Text="Имя:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Name}" FontSize="17"></TextBox>
+            <TextBlock Text="Отчество:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Otech}" FontSize="17"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Номер, серия:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding NumSeria}" FontSize="17" MaxLength="10"></TextBox>
+            <TextBlock Text="Дата рождения:" FontSize="17"></TextBlock>
+            <DatePicker SelectedDate="{Binding DateBorn}" FontSize="17"></DatePicker>
+            <TextBlock Text="Пол:" FontSize="17"></TextBlock>
+            <ComboBox Name="ComboPols" DisplayMemberPath="Name" FontSize="17"
+                      SelectedItem="{Binding Pol}"></ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Адресс:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Adress}" FontSize="17"></TextBox>
+            <TextBlock Text="Телефон:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Phone}" FontSize="17"></TextBox>
+            <TextBlock Text="Почта:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Email}" FontSize="17"></TextBox>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Карта:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Card}" FontSize="17"></TextBox>
+            <TextBlock Text="Начало действия:" FontSize="17"></TextBlock>
+            <DatePicker SelectedDate="{Binding DateStart}" FontSize="17"></DatePicker>
+            <TextBlock Text="Конец действия:" FontSize="17"></TextBlock>
+            <DatePicker SelectedDate="{Binding DateEnd}" FontSize="17"></DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <TextBlock Text="Следующая дата:" FontSize="17"></TextBlock>
+            <DatePicker SelectedDate="{Binding DateNext}" FontSize="17"></DatePicker>
+            <TextBlock Text="Номер полиса:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Polic}" FontSize="17"></TextBox>
+            <TextBlock Text="Дата полиса:" FontSize="17"></TextBlock>
+            <DatePicker SelectedDate="{Binding DatePolis}" FontSize="17"></DatePicker>
+        </StackPanel>
+        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <Image Source="{Binding Photo}" Height="150" Width="150"></Image>
+            <Button Name="GotPhoto" FontSize="17" Content="Загрузить"
+                    Click="GotPhoto_Click"></Button>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <Button Name="GotQr" FontSize="17" Content="Сгенирировать qr-код"
+                    Click="GotQr_Click"></Button>
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Width="200">
+            <Button Name="Save" FontSize="17" Content="Сохранить"
+                    Click="Save_Click"></Button>
+        </StackPanel>
+    </Grid>
+</Page>
