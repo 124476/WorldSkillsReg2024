@@ -18,6 +18,7 @@ namespace _1_2_4_Session.Models
         public Doctor()
         {
             this.Place = new HashSet<Place>();
+            this.Raspisanie = new HashSet<Raspisanie>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace _1_2_4_Session.Models
         public virtual Otdel Otdel { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Place> Place { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Raspisanie> Raspisanie { get; set; }
     }
 }

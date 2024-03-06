@@ -33,7 +33,7 @@
             <TextBlock Text="Номер, серия:" FontSize="17"></TextBlock>
             <TextBox Text="{Binding NumSeria}" FontSize="17" MaxLength="10"></TextBox>
             <TextBlock Text="Дата рождения:" FontSize="17"></TextBlock>
-            <DatePicker SelectedDate="{Binding DateBorn}" FontSize="17"></DatePicker>
+            <DatePicker SelectedDate="{Binding DateBorn}" FontSize="17" Name="DateBorn"></DatePicker>
             <TextBlock Text="Пол:" FontSize="17"></TextBlock>
             <ComboBox Name="ComboPols" DisplayMemberPath="Name" FontSize="17"
                       SelectedItem="{Binding Pol}"></ComboBox>
@@ -52,18 +52,18 @@
             <TextBlock Text="Карта:" FontSize="17"></TextBlock>
             <TextBox Text="{Binding Card}" FontSize="17"></TextBox>
             <TextBlock Text="Начало действия:" FontSize="17"></TextBlock>
-            <DatePicker SelectedDate="{Binding DateStart}" FontSize="17"></DatePicker>
+            <DatePicker SelectedDate="{Binding DateStart}" FontSize="17" Name="DateStart"></DatePicker>
             <TextBlock Text="Конец действия:" FontSize="17"></TextBlock>
-            <DatePicker SelectedDate="{Binding DateEnd}" FontSize="17"></DatePicker>
+            <DatePicker SelectedDate="{Binding DateEnd}" FontSize="17" Name="DateEnd"></DatePicker>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Width="200">
             <TextBlock Text="Следующая дата:" FontSize="17"></TextBlock>
-            <DatePicker SelectedDate="{Binding DateNext}" FontSize="17"></DatePicker>
+            <DatePicker SelectedDate="{Binding DateNext}" FontSize="17" Name="DateNext"></DatePicker>
             <TextBlock Text="Номер полиса:" FontSize="17"></TextBlock>
             <TextBox Text="{Binding Polic}" FontSize="17"></TextBox>
             <TextBlock Text="Дата полиса:" FontSize="17"></TextBlock>
-            <DatePicker SelectedDate="{Binding DatePolis}" FontSize="17"></DatePicker>
+            <DatePicker SelectedDate="{Binding DatePolis}" FontSize="17" Name="DatePolis"></DatePicker>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Width="200">

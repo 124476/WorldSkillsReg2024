@@ -1,0 +1,23 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.NewRaspisan"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="NewRaspisan">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <TextBlock Text="Дата начала:" FontSize="17"></TextBlock>
+            <DatePicker Name="DateStart" FontSize="17"></DatePicker>
+            <TextBlock Text="Дата конца:" FontSize="17"></TextBlock>
+            <DatePicker Name="DateEnd" FontSize="17"></DatePicker>
+            <TextBlock Text="Время" FontSize="17"></TextBlock>
+            <TextBox x:Name="TimePac" FontSize="17"></TextBox>
+            <CheckBox x:Name="IsSpech" FontSize="17" Content="Специльное"></CheckBox>
+            <Button x:Name="Save" Content="Добавить" Click="Save_Click" FontSize="17"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

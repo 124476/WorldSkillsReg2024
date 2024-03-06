@@ -1,0 +1,52 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.Napravlen"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Napravlen">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"
+                    Grid.Column="0" Grid.Row="0">
+            <TextBlock Text="Дата проведения:" FontSize="17"></TextBlock>
+            <DatePicker SelectedDate="{Binding Date}" FontSize="17" Name="PicDate"></DatePicker>
+            <TextBlock Text="Доктор:" FontSize="17"></TextBlock>
+            <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Doctor}" 
+                      FontSize="17" Name="ComboDoctors"></ComboBox>
+            <TextBlock Text="Тип:" FontSize="17"></TextBlock>
+            <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Tip}" 
+                      FontSize="17" Name="ComboTips"></ComboBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"
+                    Grid.Column="1" Grid.Row="0">
+            <TextBlock Text="Результат:" FontSize="17"></TextBlock>
+            <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Result}" 
+                      FontSize="17" Name="ComboResults"></ComboBox>
+            <TextBlock Text="Мероприятие:" FontSize="17"></TextBlock>
+            <ComboBox DisplayMemberPath="Name" SelectedItem="{Binding Meroprition}" 
+                      FontSize="17" Name="ComboMeropriations"></ComboBox>
+            <TextBlock Text="Рекомендация:" FontSize="17"></TextBlock>
+            <TextBox Text="{Binding Recomendation}" 
+                      FontSize="17" ></TextBox>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"
+                    Grid.Column="0" Grid.Row="1">
+            <Button Name="BtnRechept" FontSize="17" Click="BtnRechept_Click" Content="Рецепты"></Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200"
+                    Grid.Column="1" Grid.Row="1">
+            <Button Name="Save" FontSize="17" Click="Save_Click" Content="Сохранить"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

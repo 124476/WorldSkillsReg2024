@@ -1,0 +1,27 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.OknoRechept"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OknoRechept"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <StackPanel>
+            <DataGrid Name="DataRechepts" AutoGenerateColumns="False" IsReadOnly="True" FontSize="17" Height="380">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Доза" Binding="{Binding Doza}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Формат" Binding="{Binding Format}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Name="Del" Content="Удалить" Click="Del_Click" FontSize="17" Width="200" Margin="0,0,20,0"></Button>
+                <Button Name="New" Content="Добавить" Click="New_Click" FontSize="17" Width="200" Margin="20,0,0,0"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

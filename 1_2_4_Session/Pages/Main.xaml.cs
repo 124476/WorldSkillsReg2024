@@ -33,7 +33,22 @@ namespace _1_2_4_Session.Pages
 
         private void GotPac_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new GotPacient());
+            NavigationService.Navigate(new GotPacient(true));
+        }
+
+        private void Gos_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new GotPacient(false));
+        }
+
+        private void Naprav_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OpenDoctor());
+        }
+
+        private void Admin_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OpenDoctor());
         }
     }
 }

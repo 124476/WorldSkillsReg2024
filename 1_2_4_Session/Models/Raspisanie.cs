@@ -12,29 +12,24 @@ namespace _1_2_4_Session.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Place
+    public partial class Raspisanie
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Place()
+        public Raspisanie()
         {
-            this.Rechpt = new HashSet<Rechpt>();
+            this.Zapiska = new HashSet<Zapiska>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> PacientId { get; set; }
-        public Nullable<System.DateTime> Date { get; set; }
         public Nullable<int> DoctorId { get; set; }
-        public Nullable<int> TipId { get; set; }
-        public Nullable<int> MeropriationId { get; set; }
-        public Nullable<int> ResultId { get; set; }
-        public string Recomendation { get; set; }
+        public Nullable<System.DateTime> Date { get; set; }
+        public Nullable<System.TimeSpan> Time { get; set; }
+        public Nullable<bool> IsCanUse { get; set; }
+        public Nullable<bool> IsSpech { get; set; }
+        public Nullable<bool> IsCanUsePac { get; set; }
     
         public virtual Doctor Doctor { get; set; }
-        public virtual Meroprition Meroprition { get; set; }
-        public virtual Pacient Pacient { get; set; }
-        public virtual Result Result { get; set; }
-        public virtual Tip Tip { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Rechpt> Rechpt { get; set; }
+        public virtual ICollection<Zapiska> Zapiska { get; set; }
     }
 }

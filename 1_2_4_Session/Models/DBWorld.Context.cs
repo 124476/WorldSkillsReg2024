@@ -13,10 +13,10 @@ namespace _1_2_4_Session.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Session_1_2_4_2024Entities : DbContext
+    public partial class Session_1_2_4_2024Entities4 : DbContext
     {
-        public Session_1_2_4_2024Entities()
-            : base("name=Session_1_2_4_2024Entities")
+        public Session_1_2_4_2024Entities4()
+            : base("name=Session_1_2_4_2024Entities4")
         {
         }
     
@@ -27,13 +27,17 @@ namespace _1_2_4_Session.Models
     
         public virtual DbSet<Diagnoz> Diagnoz { get; set; }
         public virtual DbSet<Doctor> Doctor { get; set; }
+        public virtual DbSet<Gospital> Gospital { get; set; }
         public virtual DbSet<Meroprition> Meroprition { get; set; }
         public virtual DbSet<Otdel> Otdel { get; set; }
         public virtual DbSet<Pacient> Pacient { get; set; }
         public virtual DbSet<Place> Place { get; set; }
         public virtual DbSet<Pol> Pol { get; set; }
+        public virtual DbSet<Raspisanie> Raspisanie { get; set; }
+        public virtual DbSet<Rechpt> Rechpt { get; set; }
         public virtual DbSet<Result> Result { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tip> Tip { get; set; }
+        public virtual DbSet<Zapiska> Zapiska { get; set; }
     }
 }

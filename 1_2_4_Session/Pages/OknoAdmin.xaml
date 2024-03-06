@@ -1,0 +1,24 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.OknoAdmin"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OknoAdmin">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" FontSize="17" Content="Пациенты" Name="Pac" 
+                Click="Pac_Click" Width="200" Height="200"></Button>
+        <Button Grid.Column="1" FontSize="17" Content="Расписание" Name="Ras" 
+                Click="Ras_Click"  Width="200" Height="200"></Button>
+        <Button Grid.Column="2" FontSize="17" Content="Главный доктор" Name="Reg" 
+                Click="Reg_Click"  Width="200" Height="200"></Button>
+    </Grid>
+</Page>

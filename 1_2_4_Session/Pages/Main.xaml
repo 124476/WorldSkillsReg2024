@@ -14,6 +14,12 @@
                     Click="NewPac_Click"></Button>
             <Button Name="GotPac" FontSize="17" Content="Найти пациента"
                     Click="GotPac_Click"></Button>
+            <Button Name="Gos" FontSize="17" Content="Госпитализация"
+                    Click="Gos_Click"></Button>
+            <Button Name="Naprav" FontSize="17" Content="Направление на лечебно-диагностические мероприятия"
+                    Click="Naprav_Click"></Button>
+            <Button Name="Admin" FontSize="17" Content="Администрирование, планирование и статистика"
+                    Click="Admin_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

@@ -68,6 +68,99 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\DBWorld.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBWorld.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBWorld.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DBWorld.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBWorld.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Diagnoz.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Doctor.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gospital.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Meroprition.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Otdel.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pacient.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Place.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Pol.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Raspisanie.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rechpt.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Result.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tip.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zapiska.cs">
+      <DependentUpon>DBWorld.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\GositalPacient.xaml.cs">
+      <DependentUpon>GositalPacient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Napravlen.xaml.cs">
+      <DependentUpon>Napravlen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewRaspisan.xaml.cs">
+      <DependentUpon>NewRaspisan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NewRechept.xaml.cs">
+      <DependentUpon>NewRechept.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OknoAdmin.xaml.cs">
+      <DependentUpon>OknoAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OknoDoctor.xaml.cs">
+      <DependentUpon>OknoDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OknoGlav.xaml.cs">
+      <DependentUpon>OknoGlav.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OknoRechept.xaml.cs">
+      <DependentUpon>OknoRechept.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OknoRegister.xaml.cs">
+      <DependentUpon>OknoRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\OpenDoctor.xaml.cs">
+      <DependentUpon>OpenDoctor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RedackZapiska.xaml.cs">
+      <DependentUpon>RedackZapiska.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RedactDoctor.xaml.cs">
+      <DependentUpon>RedactDoctor.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RegPacient.xaml.cs">
       <DependentUpon>RegPacient.xaml</DependentUpon>
     </Compile>
@@ -86,11 +179,59 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\GositalPacient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GotPacient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Main.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Napravlen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NewRaspisan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NewRechept.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OknoAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OknoDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OknoGlav.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OknoRechept.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OknoRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\OpenDoctor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RedackZapiska.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RedactDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -104,51 +245,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\DBWorldSkills.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBWorldSkills.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBWorldSkills.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DBWorldSkills.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DBWorldSkills.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Diagnoz.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Doctor.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Meroprition.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Otdel.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pacient.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Place.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Pol.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Result.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Tip.cs">
-      <DependentUpon>DBWorldSkills.tt</DependentUpon>
-    </Compile>
     <Compile Include="Pages\GotPacient.xaml.cs">
       <DependentUpon>GotPacient.xaml</DependentUpon>
     </Compile>
@@ -172,12 +268,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Models\DBWorldSkills.edmx">
+    <EntityDeploy Include="Models\DBWorld.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBWorldSkills.Designer.cs</LastGenOutput>
+      <LastGenOutput>DBWorld.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\DBWorldSkills.edmx.diagram">
-      <DependentUpon>DBWorldSkills.edmx</DependentUpon>
+    <None Include="Models\DBWorld.edmx.diagram">
+      <DependentUpon>DBWorld.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -189,20 +285,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\DBWorldSkills.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBWorldSkills.Context.cs</LastGenOutput>
-      <DependentUpon>DBWorldSkills.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DBWorldSkills.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBWorldSkills.edmx</DependentUpon>
-      <LastGenOutput>DBWorldSkills.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Models\DBWorld.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBWorld.edmx</DependentUpon>
+      <LastGenOutput>DBWorld.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DBWorld.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBWorld.edmx</DependentUpon>
+      <LastGenOutput>DBWorld.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -14,6 +14,6 @@ namespace _1_2_4_Session
     /// </summary>
     public partial class App : Application
     {
-        public static Session_1_2_4_2024Entities DB = new Session_1_2_4_2024Entities();
+        public static Session_1_2_4_2024Entities4 DB = new Session_1_2_4_2024Entities4();
     }
 }

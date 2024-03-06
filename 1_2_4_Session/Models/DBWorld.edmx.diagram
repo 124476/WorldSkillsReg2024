@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="36b970bd064c479b8fbb76b6a4a94e29" Name="Diagram1">
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Diagnoz" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Doctor" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Gospital" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Meroprition" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Otdel" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Pacient" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Place" Width="1.5" PointX="5.25" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Pol" Width="1.5" PointX="1.5" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Raspisanie" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Rechpt" Width="1.5" PointX="7.5" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Result" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Tip" Width="1.5" PointX="3" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Session_1_2_4_2024Model.Zapiska" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Pacient_Diagnoz" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Doctor_Otdel" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Place_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Raspisanie_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Gospital_Otdel" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Gospital_Pacient" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Place_Meroprition" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Pacient_Pol" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Place_Pacient" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Zapiska_Pacient" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Place_Result" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Place_Tip" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Rechpt_Place" ManuallyRouted="false" />
+        <AssociationConnector Association="Session_1_2_4_2024Model.FK_Zapiska_Raspisanie" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

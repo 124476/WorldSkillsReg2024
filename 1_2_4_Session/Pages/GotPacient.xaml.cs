@@ -26,9 +26,11 @@ namespace _1_2_4_Session.Pages
     /// </summary>
     public partial class GotPacient : Page
     {
-        public GotPacient()
+        bool isGos;
+        public GotPacient(bool Gos)
         {
             InitializeComponent();
+            isGos = Gos;
         }
 
         private void GotPac_Click(object sender, RoutedEventArgs e)
@@ -36,7 +38,14 @@ namespace _1_2_4_Session.Pages
             Pacient pacient = App.DB.Pacient.FirstOrDefault(x => x.Id.ToString() == PacId.Text);
             if (pacient != null)
             {
-                NavigationService.Navigate(new RegPacient(pacient));
+                if (isGos)
+                {
+                    NavigationService.Navigate(new RegPacient(pacient));
+                }
+                else
+                {
+                    NavigationService.Navigate(new GositalPacient(pacient));
+                }
             }
             else
             {
@@ -66,7 +75,14 @@ namespace _1_2_4_Session.Pages
                         Pacient pacient = App.DB.Pacient.FirstOrDefault(x => x.Id.ToString() == id);
                         if (pacient != null)
                         {
-                            NavigationService.Navigate(new RegPacient(pacient));
+                            if (isGos)
+                            {
+                                NavigationService.Navigate(new RegPacient(pacient));
+                            }
+                            else
+                            {
+                                NavigationService.Navigate(new GositalPacient(pacient));
+                            }
                         }
                         else
                         {

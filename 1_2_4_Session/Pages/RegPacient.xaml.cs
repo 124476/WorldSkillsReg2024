@@ -58,8 +58,8 @@ namespace _1_2_4_Session.Pages
         {
             if (pacient.Surname != null && pacient.Name != null && pacient.Otech != null
                 && pacient.NumSeria != null && pacient.Adress != null && ComboPols.SelectedItem != null
-                && pacient.DateBorn.Value != null && pacient.Phone != null && pacient.Card != null
-                && pacient.DateStart.Value != null && pacient.DateEnd.Value != null && pacient.DatePolis.Value != null)
+                && DateBorn.SelectedDate != null && pacient.Phone != null && pacient.Card != null
+                && DateNext.SelectedDate != null && DateStart.SelectedDate != null && DatePolis.SelectedDate != null)
             {
                 if (pacient.Id == 0)
                 {

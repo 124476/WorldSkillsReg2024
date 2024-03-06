@@ -1,0 +1,49 @@
+﻿<Page x:Class="_1_2_4_Session.Pages.OknoRegister"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:_1_2_4_Session.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OknoRegister"
+      Loaded="Page_Loaded">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,40,0">
+                <TextBox x:Name="PoiskText" FontSize="17" Width="500"></TextBox>
+                <Button x:Name="PoiskBtn" Content="Найти" Click="PoiskBtn_Click" FontSize="17" Width="100"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,40,0">
+                <ComboBox Name="ComboVid" FontSize="17" 
+                          SelectionChanged="ComboVid_SelectionChanged"  Width="150"></ComboBox>
+                <DatePicker Name="PoiskDate" Width="150" FontSize="17" SelectedDateChanged="PoiskDate_SelectedDateChanged"></DatePicker>
+            </StackPanel>
+            <DataGrid AutoGenerateColumns="False" IsReadOnly="True" FontSize="17" Name="DataZapis"
+                      Height="340">
+                <DataGrid.RowStyle>
+                    <Style TargetType="DataGridRow">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Raspisanie.IsSpech}" Value="true">
+                                <Setter Property="Background" Value="AliceBlue"></Setter>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.RowStyle>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Пациент" Binding="{Binding Pacient.Surname}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Врач" Binding="{Binding Raspisanie.Doctor.Surname}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отдел" Binding="{Binding Raspisanie.Doctor.Otdel.Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата" Binding="{Binding Raspisanie.Date, StringFormat='dd/MM/yy'}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Время" Binding="{Binding Raspisanie.Time}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Специальное" Binding="{Binding Raspisanie.IsSpech}"></DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button x:Name="Del" Content="Удалить" FontSize="17" Click="Del_Click" Width="200" Margin="10,0,10,0"></Button>
+                <Button x:Name="New" Content="Добавить" FontSize="17" Click="New_Click"  Width="200" Margin="10,0,10,0"></Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

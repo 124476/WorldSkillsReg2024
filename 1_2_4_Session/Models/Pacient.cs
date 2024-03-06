@@ -17,7 +17,9 @@ namespace _1_2_4_Session.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Pacient()
         {
+            this.Gospital = new HashSet<Gospital>();
             this.Place = new HashSet<Place>();
+            this.Zapiska = new HashSet<Zapiska>();
         }
     
         public int Id { get; set; }
@@ -40,8 +42,12 @@ namespace _1_2_4_Session.Models
         public byte[] Photo { get; set; }
     
         public virtual Diagnoz Diagnoz { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Gospital> Gospital { get; set; }
         public virtual Pol Pol { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Place> Place { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zapiska> Zapiska { get; set; }
     }
 }

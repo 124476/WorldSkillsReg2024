@@ -22,6 +22,20 @@
           <Property Name="Otech" Type="nvarchar" MaxLength="100" />
           <Property Name="OtdelId" Type="int" />
         </EntityType>
+        <EntityType Name="Gospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacientId" Type="int" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="DateEnd" Type="date" />
+          <Property Name="OtdelId" Type="int" />
+          <Property Name="IsMoney" Type="bit" />
+          <Property Name="IsCan" Type="bit" />
+          <Property Name="Prich" Type="nvarchar" MaxLength="100" />
+          <Property Name="Chel" Type="nvarchar" MaxLength="150" />
+        </EntityType>
         <EntityType Name="Meroprition">
           <Key>
             <PropertyRef Name="Id" />
@@ -69,7 +83,7 @@
           <Property Name="DoctorId" Type="int" />
           <Property Name="TipId" Type="int" />
           <Property Name="MeropriationId" Type="int" />
-          <Property Name="Result" Type="int" />
+          <Property Name="ResultId" Type="int" />
           <Property Name="Recomendation" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Pol">
@@ -78,6 +92,28 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Raspisanie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorId" Type="int" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Time" Type="time" Precision="7" />
+          <Property Name="IsCanUse" Type="bit" />
+          <Property Name="IsSpech" Type="bit" />
+          <Property Name="IsCanUsePac" Type="bit" />
+        </EntityType>
+        <EntityType Name="Rechpt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Doza" Type="nvarchar" MaxLength="50" />
+          <Property Name="Format" Type="nvarchar" MaxLength="150" />
+          <Property Name="PlacesId" Type="int" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -103,6 +139,15 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="150" />
         </EntityType>
+        <EntityType Name="Zapiska">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PacientId" Type="int" />
+          <Property Name="PaspisanieId" Type="int" />
+          <Property Name="IsPredvar" Type="bit" />
+        </EntityType>
         <Association Name="FK_Doctor_Otdel">
           <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
           <End Role="Doctor" Type="Self.Doctor" Multiplicity="*" />
@@ -112,6 +157,30 @@
             </Principal>
             <Dependent Role="Doctor">
               <PropertyRef Name="OtdelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gospital_Otdel">
+          <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="OtdelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gospital_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="PacientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -183,7 +252,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Place">
-              <PropertyRef Name="Result" />
+              <PropertyRef Name="ResultId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -199,20 +268,80 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Raspisanie_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Raspisanie">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rechpt_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Rechpt" Type="Self.Rechpt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rechpt">
+              <PropertyRef Name="PlacesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapiska_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Zapiska" Type="Self.Zapiska" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zapiska">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapiska_Raspisanie">
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="0..1" />
+          <End Role="Zapiska" Type="Self.Zapiska" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raspisanie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zapiska">
+              <PropertyRef Name="PaspisanieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Хранилище Session_1_2_4_2024ModelContainer">
           <EntitySet Name="Diagnoz" EntityType="Self.Diagnoz" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gospital" EntityType="Self.Gospital" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Meroprition" EntityType="Self.Meroprition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Otdel" EntityType="Self.Otdel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pacient" EntityType="Self.Pacient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Place" EntityType="Self.Place" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pol" EntityType="Self.Pol" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Raspisanie" EntityType="Self.Raspisanie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rechpt" EntityType="Self.Rechpt" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Result" EntityType="Self.Result" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Tip" EntityType="Self.Tip" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zapiska" EntityType="Self.Zapiska" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Doctor_Otdel" Association="Self.FK_Doctor_Otdel">
             <End Role="Otdel" EntitySet="Otdel" />
             <End Role="Doctor" EntitySet="Doctor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gospital_Otdel" Association="Self.FK_Gospital_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="Gospital" EntitySet="Gospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gospital_Pacient" Association="Self.FK_Gospital_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Gospital" EntitySet="Gospital" />
           </AssociationSet>
           <AssociationSet Name="FK_Pacient_Diagnoz" Association="Self.FK_Pacient_Diagnoz">
             <End Role="Diagnoz" EntitySet="Diagnoz" />
@@ -242,6 +371,22 @@
             <End Role="Tip" EntitySet="Tip" />
             <End Role="Place" EntitySet="Place" />
           </AssociationSet>
+          <AssociationSet Name="FK_Raspisanie_Doctor" Association="Self.FK_Raspisanie_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rechpt_Place" Association="Self.FK_Rechpt_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Rechpt" EntitySet="Rechpt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapiska_Pacient" Association="Self.FK_Zapiska_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Zapiska" EntitySet="Zapiska" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapiska_Raspisanie" Association="Self.FK_Zapiska_Raspisanie">
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+            <End Role="Zapiska" EntitySet="Zapiska" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -267,6 +412,23 @@
           <Property Name="OtdelId" Type="Int32" />
           <NavigationProperty Name="Otdel" Relationship="Self.FK_Doctor_Otdel" FromRole="Doctor" ToRole="Otdel" />
           <NavigationProperty Name="Place" Relationship="Self.FK_Place_Doctor" FromRole="Doctor" ToRole="Place" />
+          <NavigationProperty Name="Raspisanie" Relationship="Self.FK_Raspisanie_Doctor" FromRole="Doctor" ToRole="Raspisanie" />
+        </EntityType>
+        <EntityType Name="Gospital">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacientId" Type="Int32" />
+          <Property Name="DateStart" Type="DateTime" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Precision="0" />
+          <Property Name="OtdelId" Type="Int32" />
+          <Property Name="IsMoney" Type="Boolean" />
+          <Property Name="IsCan" Type="Boolean" />
+          <Property Name="Prich" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Chel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Otdel" Relationship="Self.FK_Gospital_Otdel" FromRole="Gospital" ToRole="Otdel" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK_Gospital_Pacient" FromRole="Gospital" ToRole="Pacient" />
         </EntityType>
         <EntityType Name="Meroprition">
           <Key>
@@ -283,6 +445,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Doctor_Otdel" FromRole="Otdel" ToRole="Doctor" />
+          <NavigationProperty Name="Gospital" Relationship="Self.FK_Gospital_Otdel" FromRole="Otdel" ToRole="Gospital" />
         </EntityType>
         <EntityType Name="Pacient">
           <Key>
@@ -307,8 +470,10 @@
           <Property Name="DiagnozId" Type="Int32" />
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Diagnoz" Relationship="Self.FK_Pacient_Diagnoz" FromRole="Pacient" ToRole="Diagnoz" />
+          <NavigationProperty Name="Gospital" Relationship="Self.FK_Gospital_Pacient" FromRole="Pacient" ToRole="Gospital" />
           <NavigationProperty Name="Pol" Relationship="Self.FK_Pacient_Pol" FromRole="Pacient" ToRole="Pol" />
           <NavigationProperty Name="Place" Relationship="Self.FK_Place_Pacient" FromRole="Pacient" ToRole="Place" />
+          <NavigationProperty Name="Zapiska" Relationship="Self.FK_Zapiska_Pacient" FromRole="Pacient" ToRole="Zapiska" />
         </EntityType>
         <EntityType Name="Place">
           <Key>
@@ -320,13 +485,14 @@
           <Property Name="DoctorId" Type="Int32" />
           <Property Name="TipId" Type="Int32" />
           <Property Name="MeropriationId" Type="Int32" />
-          <Property Name="Result" Type="Int32" />
+          <Property Name="ResultId" Type="Int32" />
           <Property Name="Recomendation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Place_Doctor" FromRole="Place" ToRole="Doctor" />
           <NavigationProperty Name="Meroprition" Relationship="Self.FK_Place_Meroprition" FromRole="Place" ToRole="Meroprition" />
           <NavigationProperty Name="Pacient" Relationship="Self.FK_Place_Pacient" FromRole="Place" ToRole="Pacient" />
-          <NavigationProperty Name="Result1" Relationship="Self.FK_Place_Result" FromRole="Place" ToRole="Result" />
+          <NavigationProperty Name="Result" Relationship="Self.FK_Place_Result" FromRole="Place" ToRole="Result" />
           <NavigationProperty Name="Tip" Relationship="Self.FK_Place_Tip" FromRole="Place" ToRole="Tip" />
+          <NavigationProperty Name="Rechpt" Relationship="Self.FK_Rechpt_Place" FromRole="Place" ToRole="Rechpt" />
         </EntityType>
         <EntityType Name="Pol">
           <Key>
@@ -335,6 +501,31 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Pacient" Relationship="Self.FK_Pacient_Pol" FromRole="Pol" ToRole="Pacient" />
+        </EntityType>
+        <EntityType Name="Raspisanie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Time" Type="Time" Precision="7" />
+          <Property Name="IsCanUse" Type="Boolean" />
+          <Property Name="IsSpech" Type="Boolean" />
+          <Property Name="IsCanUsePac" Type="Boolean" />
+          <NavigationProperty Name="Doctor" Relationship="Self.FK_Raspisanie_Doctor" FromRole="Raspisanie" ToRole="Doctor" />
+          <NavigationProperty Name="Zapiska" Relationship="Self.FK_Zapiska_Raspisanie" FromRole="Raspisanie" ToRole="Zapiska" />
+        </EntityType>
+        <EntityType Name="Rechpt">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Doza" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Format" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="PlacesId" Type="Int32" />
+          <NavigationProperty Name="Place" Relationship="Self.FK_Rechpt_Place" FromRole="Rechpt" ToRole="Place" />
         </EntityType>
         <EntityType Name="Result">
           <Key>
@@ -362,6 +553,17 @@
           <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Place" Relationship="Self.FK_Place_Tip" FromRole="Tip" ToRole="Place" />
         </EntityType>
+        <EntityType Name="Zapiska">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PacientId" Type="Int32" />
+          <Property Name="PaspisanieId" Type="Int32" />
+          <Property Name="IsPredvar" Type="Boolean" />
+          <NavigationProperty Name="Pacient" Relationship="Self.FK_Zapiska_Pacient" FromRole="Zapiska" ToRole="Pacient" />
+          <NavigationProperty Name="Raspisanie" Relationship="Self.FK_Zapiska_Raspisanie" FromRole="Zapiska" ToRole="Raspisanie" />
+        </EntityType>
         <Association Name="FK_Pacient_Diagnoz">
           <End Role="Diagnoz" Type="Self.Diagnoz" Multiplicity="0..1" />
           <End Role="Pacient" Type="Self.Pacient" Multiplicity="*" />
@@ -395,6 +597,42 @@
             </Principal>
             <Dependent Role="Place">
               <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Raspisanie_Doctor">
+          <End Role="Doctor" Type="Self.Doctor" Multiplicity="0..1" />
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Doctor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Raspisanie">
+              <PropertyRef Name="DoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gospital_Otdel">
+          <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Otdel">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="OtdelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gospital_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Gospital" Type="Self.Gospital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gospital">
+              <PropertyRef Name="PacientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -434,6 +672,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Zapiska_Pacient">
+          <End Role="Pacient" Type="Self.Pacient" Multiplicity="0..1" />
+          <End Role="Zapiska" Type="Self.Zapiska" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pacient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zapiska">
+              <PropertyRef Name="PacientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Place_Result">
           <End Role="Result" Type="Self.Result" Multiplicity="0..1" />
           <End Role="Place" Type="Self.Place" Multiplicity="*" />
@@ -442,7 +692,7 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Place">
-              <PropertyRef Name="Result" />
+              <PropertyRef Name="ResultId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -458,17 +708,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Session_1_2_4_2024Entities" annotation:LazyLoadingEnabled="true">
+        <Association Name="FK_Rechpt_Place">
+          <End Role="Place" Type="Self.Place" Multiplicity="0..1" />
+          <End Role="Rechpt" Type="Self.Rechpt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Place">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Rechpt">
+              <PropertyRef Name="PlacesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zapiska_Raspisanie">
+          <End Role="Raspisanie" Type="Self.Raspisanie" Multiplicity="0..1" />
+          <End Role="Zapiska" Type="Self.Zapiska" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Raspisanie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Zapiska">
+              <PropertyRef Name="PaspisanieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Session_1_2_4_2024Entities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Diagnoz" EntityType="Self.Diagnoz" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" />
+          <EntitySet Name="Gospital" EntityType="Self.Gospital" />
           <EntitySet Name="Meroprition" EntityType="Self.Meroprition" />
           <EntitySet Name="Otdel" EntityType="Self.Otdel" />
           <EntitySet Name="Pacient" EntityType="Self.Pacient" />
           <EntitySet Name="Place" EntityType="Self.Place" />
           <EntitySet Name="Pol" EntityType="Self.Pol" />
+          <EntitySet Name="Raspisanie" EntityType="Self.Raspisanie" />
+          <EntitySet Name="Rechpt" EntityType="Self.Rechpt" />
           <EntitySet Name="Result" EntityType="Self.Result" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Tip" EntityType="Self.Tip" />
+          <EntitySet Name="Zapiska" EntityType="Self.Zapiska" />
           <AssociationSet Name="FK_Pacient_Diagnoz" Association="Self.FK_Pacient_Diagnoz">
             <End Role="Diagnoz" EntitySet="Diagnoz" />
             <End Role="Pacient" EntitySet="Pacient" />
@@ -480,6 +758,18 @@
           <AssociationSet Name="FK_Place_Doctor" Association="Self.FK_Place_Doctor">
             <End Role="Doctor" EntitySet="Doctor" />
             <End Role="Place" EntitySet="Place" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Raspisanie_Doctor" Association="Self.FK_Raspisanie_Doctor">
+            <End Role="Doctor" EntitySet="Doctor" />
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gospital_Otdel" Association="Self.FK_Gospital_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="Gospital" EntitySet="Gospital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gospital_Pacient" Association="Self.FK_Gospital_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Gospital" EntitySet="Gospital" />
           </AssociationSet>
           <AssociationSet Name="FK_Place_Meroprition" Association="Self.FK_Place_Meroprition">
             <End Role="Meroprition" EntitySet="Meroprition" />
@@ -493,6 +783,10 @@
             <End Role="Pacient" EntitySet="Pacient" />
             <End Role="Place" EntitySet="Place" />
           </AssociationSet>
+          <AssociationSet Name="FK_Zapiska_Pacient" Association="Self.FK_Zapiska_Pacient">
+            <End Role="Pacient" EntitySet="Pacient" />
+            <End Role="Zapiska" EntitySet="Zapiska" />
+          </AssociationSet>
           <AssociationSet Name="FK_Place_Result" Association="Self.FK_Place_Result">
             <End Role="Result" EntitySet="Result" />
             <End Role="Place" EntitySet="Place" />
@@ -501,13 +795,21 @@
             <End Role="Tip" EntitySet="Tip" />
             <End Role="Place" EntitySet="Place" />
           </AssociationSet>
+          <AssociationSet Name="FK_Rechpt_Place" Association="Self.FK_Rechpt_Place">
+            <End Role="Place" EntitySet="Place" />
+            <End Role="Rechpt" EntitySet="Rechpt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zapiska_Raspisanie" Association="Self.FK_Zapiska_Raspisanie">
+            <End Role="Raspisanie" EntitySet="Raspisanie" />
+            <End Role="Zapiska" EntitySet="Zapiska" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище Session_1_2_4_2024ModelContainer" CdmEntityContainer="Session_1_2_4_2024Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Session_1_2_4_2024ModelContainer" CdmEntityContainer="Session_1_2_4_2024Entities4">
           <EntitySetMapping Name="Diagnoz">
             <EntityTypeMapping TypeName="Session_1_2_4_2024Model.Diagnoz">
               <MappingFragment StoreEntitySet="Diagnoz">
@@ -524,6 +826,21 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Otech" ColumnName="Otech" />
                 <ScalarProperty Name="OtdelId" ColumnName="OtdelId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gospital">
+            <EntityTypeMapping TypeName="Session_1_2_4_2024Model.Gospital">
+              <MappingFragment StoreEntitySet="Gospital">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PacientId" ColumnName="PacientId" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="OtdelId" ColumnName="OtdelId" />
+                <ScalarProperty Name="IsMoney" ColumnName="IsMoney" />
+                <ScalarProperty Name="IsCan" ColumnName="IsCan" />
+                <ScalarProperty Name="Prich" ColumnName="Prich" />
+                <ScalarProperty Name="Chel" ColumnName="Chel" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -576,7 +893,7 @@
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="TipId" ColumnName="TipId" />
                 <ScalarProperty Name="MeropriationId" ColumnName="MeropriationId" />
-                <ScalarProperty Name="Result" ColumnName="Result" />
+                <ScalarProperty Name="ResultId" ColumnName="ResultId" />
                 <ScalarProperty Name="Recomendation" ColumnName="Recomendation" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -586,6 +903,30 @@
               <MappingFragment StoreEntitySet="Pol">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Raspisanie">
+            <EntityTypeMapping TypeName="Session_1_2_4_2024Model.Raspisanie">
+              <MappingFragment StoreEntitySet="Raspisanie">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="IsCanUse" ColumnName="IsCanUse" />
+                <ScalarProperty Name="IsSpech" ColumnName="IsSpech" />
+                <ScalarProperty Name="IsCanUsePac" ColumnName="IsCanUsePac" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rechpt">
+            <EntityTypeMapping TypeName="Session_1_2_4_2024Model.Rechpt">
+              <MappingFragment StoreEntitySet="Rechpt">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Doza" ColumnName="Doza" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="PlacesId" ColumnName="PlacesId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -613,6 +954,16 @@
               <MappingFragment StoreEntitySet="Tip">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zapiska">
+            <EntityTypeMapping TypeName="Session_1_2_4_2024Model.Zapiska">
+              <MappingFragment StoreEntitySet="Zapiska">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PacientId" ColumnName="PacientId" />
+                <ScalarProperty Name="PaspisanieId" ColumnName="PaspisanieId" />
+                <ScalarProperty Name="IsPredvar" ColumnName="IsPredvar" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
