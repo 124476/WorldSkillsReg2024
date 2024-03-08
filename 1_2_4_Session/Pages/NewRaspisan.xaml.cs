@@ -21,17 +21,16 @@ namespace _1_2_4_Session.Pages
     /// </summary>
     public partial class NewRaspisan : Page
     {
-        Doctor doctor;
-        public NewRaspisan(Doctor doc)
+        public NewRaspisan()
         {
             InitializeComponent();
-            doctor = doc;
+            ComboDoctors.ItemsSource = App.DB.Doctor.Where(x => x.Id < 10).ToList();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             if (DateStart.SelectedDate != null && DateEnd.SelectedDate != null
-                && TimePac != null)
+                && TimePac != null && ComboDoctors.SelectedIndex != -1)
             {
                 DateTime dateTime = DateStart.SelectedDate.Value;
                 while(dateTime <= DateEnd.SelectedDate.Value)
@@ -39,7 +38,7 @@ namespace _1_2_4_Session.Pages
                     Raspisanie raspisanie = new Raspisanie();
                     raspisanie.Date = dateTime;
                     raspisanie.Time = TimeSpan.Parse(TimePac.Text);
-                    raspisanie.DoctorId = doctor.Id;
+                    raspisanie.Doctor = ComboDoctors.SelectedItem as Doctor;
                     raspisanie.IsCanUse = false;
                     raspisanie.IsSpech = IsSpech.IsChecked;
                     raspisanie.IsCanUsePac = true;

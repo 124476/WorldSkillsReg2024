@@ -10,6 +10,8 @@
 
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="200">
+            <TextBlock Text="Доктор:" FontSize="17"></TextBlock>
+            <ComboBox Name="ComboDoctors" FontSize="17" DisplayMemberPath="Surname"></ComboBox>
             <TextBlock Text="Дата начала:" FontSize="17"></TextBlock>
             <DatePicker Name="DateStart" FontSize="17"></DatePicker>
             <TextBlock Text="Дата конца:" FontSize="17"></TextBlock>

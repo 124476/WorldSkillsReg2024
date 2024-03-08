@@ -16,9 +16,9 @@
         </Grid.ColumnDefinitions>
         <Button Grid.Column="0" FontSize="17" Content="Пациенты" Name="Pac" 
                 Click="Pac_Click" Width="200" Height="200"></Button>
-        <Button Grid.Column="1" FontSize="17" Content="Расписание" Name="Ras" 
+        <Button Grid.Column="1" FontSize="17" Content="Записи" Name="Ras" 
                 Click="Ras_Click"  Width="200" Height="200"></Button>
-        <Button Grid.Column="2" FontSize="17" Content="Главный доктор" Name="Reg" 
+        <Button Grid.Column="2" FontSize="17" Content="Расписание" Name="Reg" 
                 Click="Reg_Click"  Width="200" Height="200"></Button>
     </Grid>
 </Page>

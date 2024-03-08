@@ -11,15 +11,6 @@
 
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,40,0">
-                <TextBox x:Name="PoiskText" FontSize="17" Width="500"></TextBox>
-                <Button x:Name="PoiskBtn" Content="Найти" Click="PoiskBtn_Click" FontSize="17" Width="100"></Button>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5,40,0">
-                <ComboBox Name="ComboVid" FontSize="17" 
-                          SelectionChanged="ComboVid_SelectionChanged"  Width="150"></ComboBox>
-                <DatePicker Name="PoiskDate" Width="150" FontSize="17" SelectedDateChanged="PoiskDate_SelectedDateChanged"></DatePicker>
-            </StackPanel>
             <DataGrid AutoGenerateColumns="False" IsReadOnly="True" FontSize="17" Name="DataZapis"
                       Height="340">
                 <DataGrid.RowStyle>
